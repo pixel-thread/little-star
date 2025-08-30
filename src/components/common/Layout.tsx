@@ -1,5 +1,6 @@
 import React from "react";
 import { Container } from "./Container";
+import { SmoothScroll } from "./SmoothScroll";
 
 interface LayoutProps {
   header?: React.ReactNode;
@@ -20,7 +21,9 @@ export const Layout: React.FC<LayoutProps> = ({
       {header && <>{header}</>}
 
       {/* Main Content */}
-      <main className="flex-1 items-center justify-center">{children}</main>
+      <main className="flex-1 items-center justify-center">
+        <SmoothScroll>{children}</SmoothScroll>
+      </main>
 
       {/* Footer */}
       {footer && <>{footer}</>}

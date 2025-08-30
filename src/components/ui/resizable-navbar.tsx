@@ -7,6 +7,7 @@ import {
   useScroll,
   useMotionValueEvent,
 } from "motion/react";
+import Link from "next/link";
 
 import React, { useRef, useState } from "react";
 
@@ -104,7 +105,7 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
       }}
       className={cn(
         "relative z-[60] mx-auto hidden  w-full max-w-7xl flex-row items-center justify-between self-start rounded-full bg-transparent px-2 py-2 lg:flex dark:bg-transparent",
-        visible ? "backdrop-blur-2xl" : "bg-transparent",
+        visible ? "backdrop-blur-2xl text-white" : "bg-transparent",
         className,
       )}
     >
@@ -130,7 +131,7 @@ export const NavItems = ({
       )}
     >
       {items.map((item, idx) => (
-        <a
+        <Link
           onMouseEnter={() => setHovered(idx)}
           onClick={onItemClick}
           className={cn("relative px-4 py-2")}
@@ -147,13 +148,13 @@ export const NavItems = ({
             className={cn(
               "relative z-20",
               visible
-                ? "text-red-500"
-                : "text-neutral-600 dark:text-neutral-300",
+                ? "text-white dark:text-neutral-500"
+                : "text-white dark:text-neutral-300",
             )}
           >
             {item.name}
           </span>
-        </a>
+        </Link>
       ))}
     </motion.div>
   );
@@ -256,7 +257,7 @@ export const NavbarLogo = ({ url }: { url?: string }) => {
         width={30}
         height={30}
       />
-      <span className="relative text-primary hover:text-primary/60 dark:hover:text-white transition font-bold text-md">
+      <span className="relative text-white hover:text-primary/60 dark:hover:text-white transition font-bold text-md">
         {process.env.NEXT_PUBLIC_APP_NAME}
       </span>
     </a>

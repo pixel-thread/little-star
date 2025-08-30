@@ -15,12 +15,16 @@ import { useState } from "react";
 export function Header() {
   const navItems = [
     {
+      name: "Home",
+      link: "/",
+    },
+    {
       name: "Gallery",
-      link: "#features",
+      link: "#gallery",
     },
     {
       name: "Announcements",
-      link: "#pricing",
+      link: "#announcements",
     },
     {
       name: "Contact",
@@ -34,7 +38,10 @@ export function Header() {
     <Navbar>
       <NavBody className="px-4">
         <NavbarLogo />
-        <NavItems items={navItems} />
+        <NavItems
+          items={navItems}
+          onItemClick={() => setIsMobileMenuOpen(true)}
+        />
         <NavbarButton variant="gradient">Enroll Now</NavbarButton>
       </NavBody>
 

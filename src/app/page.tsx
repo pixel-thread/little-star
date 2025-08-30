@@ -6,6 +6,7 @@ import { Achivements } from "@/components/pages/achivements";
 import { Gallery } from "@/components/pages/gallery";
 import { AboutUs } from "@/components/pages/about";
 import { Events } from "@/components/pages/events";
+import { AnnouncementPage } from "@/components/pages/announcement";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <Events />
       <Gallery />
       <Testimonials />
+      <AnnouncementPage />
     </div>
   );
 }

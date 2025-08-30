@@ -9,7 +9,10 @@ export function Gallery() {
   const heroRef = useRef<HTMLDivElement>(null);
   return (
     <Container ref={heroRef} className="h-screen py-20 w-full">
-      <div className="text-center h-auto space-y-5 flex flex-col justify-center items-center">
+      <section
+        id={"#gallery"}
+        className="text-center h-auto space-y-5 flex flex-col justify-center items-center"
+      >
         <TimelineContent
           as="h1"
           animationNum={0}
@@ -29,7 +32,7 @@ export function Gallery() {
           Explore our collection of stunning houses that showcase the beauty and
           elegance of nature.
         </TimelineContent>
-      </div>
+      </section>
       <div className="relative h-full pb-20">
         <LayoutGrid cards={cards} />
       </div>

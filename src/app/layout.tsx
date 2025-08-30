@@ -32,6 +32,9 @@ export default function RootLayout({
 
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <title>{process.env.NEXT_PUBLIC_APP_NAME || ""}</title>
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
@@ -47,19 +50,23 @@ export default function RootLayout({
               <LoaderFive text={process.env.NEXT_PUBLIC_APP_NAME || ""} />
             </div>
           )}
-          {process.env.NODE_ENV === "development" && <GridGuide />}
         </ThemeProvider>
+        {process.env.NODE_ENV === "development" && <GridGuide />}
       </body>
     </html>
   );
 }
 const GridGuide = () => {
+  const isTablet = window.matchMedia("(min-width: 768px)").matches;
+  const isLaptop = window.matchMedia("(min-width: 1024px)").matches;
   return (
     <div className="fixed inset-0 z-[999] pointer-events-none">
       <div className="container mx-auto h-full w-full grid grid-cols-4 gap-2 md:grid-cols-8 md:gap-4 lg:grid-cols-12 lg:gap-5">
-        {Array.from({ length: 12 }).map((_, i) => (
-          <div key={i} className="bg-blue-500/10 h-full w-full" />
-        ))}
+        {Array.from({ length: isLaptop ? 12 : isTablet ? 8 : 4 }).map(
+          (_, i) => (
+            <div key={i} className="bg-blue-500/20 h-full w-full" />
+          ),
+        )}
       </div>
     </div>
   );
