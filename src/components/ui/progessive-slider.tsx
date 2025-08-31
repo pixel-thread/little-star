@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "motion/react";
 import React, {
@@ -89,7 +88,9 @@ export const ProgressSlider: FC<ProgressSliderProps> = ({
     ) as React.ReactElement | undefined;
 
     if (getChildren) {
+      //@ts-expect-error error
       const values = React.Children.toArray(getChildren.props.children).map(
+        //@ts-expect-error error
         (child) => (child as React.ReactElement).props.value as string,
       );
       setSliderValues(values);
@@ -104,6 +105,7 @@ export const ProgressSlider: FC<ProgressSliderProps> = ({
     return () => {
       cancelAnimationFrame(frame.current);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sliderValues, active, isFastForward]);
 
   const animate = (now: number) => {

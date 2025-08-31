@@ -151,11 +151,7 @@ interface AccordionItemProps {
 /**
  * Accordion item component
  */
-export function AccordionItem({
-  children,
-  value,
-  className,
-}: AccordionItemProps) {
+export function AccordionItem({ children, className }: AccordionItemProps) {
   const { isActive } = useAccordion();
 
   return (

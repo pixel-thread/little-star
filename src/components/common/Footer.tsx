@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { Container } from "./Container";
@@ -56,7 +56,7 @@ export const Footer: React.FC = () => {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="w-full bg-neutral-50 border-t border-neutral-200 mt-20">
+    <footer className="w-full border-t border-neutral-200 mt-20">
       <Container>
         <div className="flex flex-col lg:flex-row justify-between gap-12 py-12">
           <div className="flex-1 flex flex-col gap-5 items-center lg:items-start">
@@ -80,7 +80,7 @@ export const Footer: React.FC = () => {
           </div>
 
           <div className="flex-1 grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-14 max-w-xl mx-auto">
-            {footerSections.map((section, i) => (
+            {footerSections.map((section) => (
               <div key={section.label}>
                 <h2 className="text-base sm:text-xl font-semibold text-neutral-900 mb-3">
                   {section.label}
@@ -121,7 +121,10 @@ export const Footer: React.FC = () => {
         </div>
 
         <div className="flex flex-col md:flex-row justify-between items-center border-t border-neutral-200 pt-6 pb-4 gap-2 text-neutral-500 text-sm">
-          <span>&copy; {year} NextCodez. All Rights Reserved.</span>
+          <span>
+            &copy; {year} {process.env.NEXT_PUBLIC_APP_NAME}. All Rights
+            Reserved.
+          </span>
           <Link href="/privacy-policy" className="font-medium hover:underline">
             Privacy Policy
           </Link>

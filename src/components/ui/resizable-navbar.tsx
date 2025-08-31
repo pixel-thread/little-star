@@ -210,7 +210,6 @@ export const MobileNavMenu = ({
   children,
   className,
   isOpen,
-  onClose,
 }: MobileNavMenuProps) => {
   return (
     <AnimatePresence>
@@ -247,7 +246,7 @@ export const MobileNavToggle = ({
 
 export const NavbarLogo = ({ url }: { url?: string }) => {
   return (
-    <a
+    <Link
       href="/"
       className="relative z-20 mr-4 flex items-center space-x-4 px-2 py-1 text-sm font-normal text-black"
     >
@@ -260,7 +259,7 @@ export const NavbarLogo = ({ url }: { url?: string }) => {
       <span className="relative text-white hover:text-primary/60 dark:hover:text-white transition font-bold text-md">
         {process.env.NEXT_PUBLIC_APP_NAME}
       </span>
-    </a>
+    </Link>
   );
 };
 

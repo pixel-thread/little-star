@@ -26,18 +26,19 @@ export const ImagesSlider = ({
 
   const handleNext = () => {
     setCurrentIndex((prevIndex) =>
-      prevIndex + 1 === images.length ? 0 : prevIndex + 1
+      prevIndex + 1 === images.length ? 0 : prevIndex + 1,
     );
   };
 
   const handlePrevious = () => {
     setCurrentIndex((prevIndex) =>
-      prevIndex - 1 < 0 ? images.length - 1 : prevIndex - 1
+      prevIndex - 1 < 0 ? images.length - 1 : prevIndex - 1,
     );
   };
 
   useEffect(() => {
     loadImages();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const loadImages = () => {
@@ -70,6 +71,7 @@ export const ImagesSlider = ({
     window.addEventListener("keydown", handleKeyDown);
 
     // autoplay
+    // eslint-disable-next-line
     let interval: any;
     if (autoplay) {
       interval = setInterval(() => {
@@ -81,6 +83,7 @@ export const ImagesSlider = ({
       window.removeEventListener("keydown", handleKeyDown);
       clearInterval(interval);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const slideVariants = {
@@ -116,11 +119,15 @@ export const ImagesSlider = ({
 
   const areImagesLoaded = loadedImages.length > 0;
 
+  if (loading) {
+    return null;
+  }
+
   return (
     <div
       className={cn(
         "overflow-hidden h-full w-full relative flex items-center justify-center",
-        className
+        className,
       )}
       style={{
         perspective: "1000px",
@@ -141,7 +148,8 @@ export const ImagesSlider = ({
             initial="initial"
             animate="visible"
             exit={direction === "up" ? "upExit" : "downExit"}
-            variants={slideVariants}
+            // eslint-disable-next-line
+            variants={slideVariants as any}
             className="image h-full w-full absolute inset-0 object-cover object-center"
           />
         </AnimatePresence>

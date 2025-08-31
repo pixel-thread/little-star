@@ -5,7 +5,9 @@ import { motion, useScroll, useSpring, useTransform } from "motion/react";
  * SmoothScroll wraps your content in a fixed, animated container
  * and applies smooth, spring-based vertical scrolling, for a native-like buttery scroll effect.
  */
-export const SmoothScroll: React.FC<PropsWithChildren<{}>> = ({ children }) => {
+export const SmoothScroll: React.FC<
+  PropsWithChildren<{ isMobile?: boolean }>
+> = ({ children }) => {
   const contentRef = useRef<HTMLDivElement>(null);
 
   // Calculate the scrollable height

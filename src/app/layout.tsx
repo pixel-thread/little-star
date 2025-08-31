@@ -7,7 +7,6 @@ import { Footer } from "@/components/common/Footer";
 import { Header } from "@/components/common/Header";
 import { ThemeProvider } from "@/components/provider/theme";
 import { LoaderFive } from "@/components/ui/loader";
-import { useIsMobile } from "@/hooks/use-mobile";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -40,11 +39,9 @@ export default function RootLayout({
       >
         <ThemeProvider>
           {isMounted ? (
-            <Layout
-              header={<Header />}
-              footer={<Footer />}
-              children={children}
-            />
+            <Layout header={<Header />} footer={<Footer />}>
+              {children}
+            </Layout>
           ) : (
             <div className="bg-black w- h-screen flex items-center justify-center">
               <LoaderFive text={process.env.NEXT_PUBLIC_APP_NAME || ""} />

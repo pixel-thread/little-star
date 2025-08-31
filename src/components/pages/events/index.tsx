@@ -181,6 +181,7 @@ export function Events() {
                     <img
                       src={item.imgSrc}
                       className="w-full sm:h-96 h-64 object-cover rounded-md"
+                      alt={item.title}
                     />
                   </div>
                 </div>
