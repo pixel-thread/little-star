@@ -79,7 +79,7 @@ export const Footer: React.FC = () => {
             </motion.p>
           </div>
 
-          <div className="flex-1 grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-14 max-w-xl mx-auto">
+          <div className="flex-1 grid grid-cols-2 lg:grid-cols-3 gap-6 md:gap-14 max-w-xl mx-auto">
             {footerSections.map((section) => (
               <div key={section.label}>
                 <h2 className="text-base sm:text-xl font-semibold text-neutral-900 mb-3">
