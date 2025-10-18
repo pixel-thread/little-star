@@ -14,11 +14,11 @@ export default function Home() {
     <div className="flex bg-gray-200 flex-col">
       <HeroSection />
       <AboutUs />
-      <Faculty />
       <Achivements />
       <Events />
       <Gallery />
       <AnnouncementPage />
+      <Faculty />
       <Contact />
     </div>
   );

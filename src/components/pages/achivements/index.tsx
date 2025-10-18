@@ -1,6 +1,8 @@
 import React, { useRef } from "react";
 import { Timeline } from "@/components/ui/timeline";
 import { TimelineContent } from "@/components/ui/timeline-content";
+import { revealVariants } from "@/lib/constant/animiation/varients";
+
 const data = [
   {
     title: "2024",
@@ -147,22 +149,6 @@ const data = [
 ];
 export function Achivements() {
   const heroRef = useRef<HTMLDivElement>(null);
-  const revealVariants = {
-    visible: (i: number) => ({
-      y: 0,
-      opacity: 1,
-      filter: "blur(0px)",
-      transition: {
-        delay: i * 0.1,
-        duration: 0.5,
-      },
-    }),
-    hidden: {
-      filter: "blur(20px)",
-      y: 100,
-      opacity: 0,
-    },
-  };
 
   return (
     <div
