@@ -21,7 +21,9 @@ export const Layout: React.FC<LayoutProps> = ({
 
       {/* Main Content */}
       <main className="flex-1 items-center justify-center">
-        <SmoothScroll>{children}</SmoothScroll>
+        {/* <SmoothScroll> */}
+        {children}
+        {/* </SmoothScroll> */}
       </main>
 
       {/* Footer */}

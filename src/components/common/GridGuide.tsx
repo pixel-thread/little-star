@@ -23,7 +23,7 @@ export const GridGuide = () => {
     <div className="fixed inset-0 z-[999] pointer-events-none">
       <div className="container mx-auto h-full w-full grid grid-cols-4 gap-2 md:grid-cols-8 md:gap-4 lg:grid-cols-12 lg:gap-5">
         {Array.from({ length: columns }).map((_, i) => (
-          <div key={i} className="bg-red-500/20 h-full w-full" />
+          <div key={i} className="bg-blue-500/5 h-full w-full" />
         ))}
       </div>
     </div>

@@ -150,7 +150,7 @@ export const ImagesSlider = ({
             exit={direction === "up" ? "upExit" : "downExit"}
             // eslint-disable-next-line
             variants={slideVariants as any}
-            className="image h-full w-full absolute inset-0 object-cover object-center"
+            className="image min-w-full h-full w-full absolute inset-0 object-cover object-center"
           />
         </AnimatePresence>
       )}

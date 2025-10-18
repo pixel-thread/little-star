@@ -7,6 +7,7 @@ import { Gallery } from "@/components/pages/gallery";
 import { AboutUs } from "@/components/pages/about";
 import { Events } from "@/components/pages/events";
 import { AnnouncementPage } from "@/components/pages/announcement";
+import Contact from "@/components/pages/contact";
 
 export default function Home() {
   return (
@@ -16,8 +17,9 @@ export default function Home() {
       <Achivements />
       <Events />
       <Gallery />
-      <Testimonials />
+      {/* <Testimonials /> */}
       <AnnouncementPage />
+      <Contact />
     </div>
   );
 }

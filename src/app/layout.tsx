@@ -38,7 +38,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ThemeProvider>
+        <ThemeProvider defaultTheme="dark">
           {isMounted ? (
             <Layout header={<Header />} footer={<Footer />}>
               {children}
