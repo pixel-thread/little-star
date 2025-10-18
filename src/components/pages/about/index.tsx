@@ -10,7 +10,7 @@ import {
 } from "@/lib/constant/animiation/varients";
 
 export function AboutUs() {
-  const heroRef = useRef<HTMLDivElement>(null);
+  const aboutUsRef = useRef<HTMLDivElement>(null);
 
   return (
     <section id="about">
@@ -19,21 +19,21 @@ export function AboutUs() {
           <TimelineContent
             as="h1"
             animationNum={0}
-            timelineRef={heroRef}
+            timelineRef={aboutUsRef}
             className="lg:text-8xl text-4xl md:text-6xl text-neutral-500/50 font-bold uppercase"
             customVariants={revealVariants}
           >
             About Us
           </TimelineContent>
         </div>
-        <div className="max-w-7xl mx-auto text-center" ref={heroRef}>
+        <div className="max-w-7xl mx-auto text-center" ref={aboutUsRef}>
           <div className="flex flex-col lg:flex-row items-center gap-8">
             {/* Right side - Content */}
             <div className="flex-1">
               <TimelineContent
                 as="h1"
                 animationNum={0}
-                timelineRef={heroRef}
+                timelineRef={aboutUsRef}
                 customVariants={revealVariants}
                 className="sm:text-4xl text-2xl md:text-5xl !leading-[110%] font-semibold text-gray-900 mb-8"
               >
@@ -41,7 +41,7 @@ export function AboutUs() {
                 <TimelineContent
                   as="span"
                   animationNum={1}
-                  timelineRef={heroRef}
+                  timelineRef={aboutUsRef}
                   customVariants={textVariants}
                   className="text-blue-600 border-2 border-blue-500 inline-block xl:h-16  border-dotted px-2 rounded-md"
                 >
@@ -51,7 +51,7 @@ export function AboutUs() {
                 <TimelineContent
                   as="span"
                   animationNum={2}
-                  timelineRef={heroRef}
+                  timelineRef={aboutUsRef}
                   customVariants={textVariants}
                   className="text-orange-600 border-2 border-orange-500 inline-block xl:h-16 border-dotted px-2 rounded-md"
                 >
@@ -62,7 +62,7 @@ export function AboutUs() {
                 <TimelineContent
                   as="span"
                   animationNum={3}
-                  timelineRef={heroRef}
+                  timelineRef={aboutUsRef}
                   customVariants={textVariants}
                   className="text-green-600 border-2 border-green-500 inline-block xl:h-16 border-dotted px-2 rounded-md"
                 >
@@ -73,7 +73,7 @@ export function AboutUs() {
                 <TimelineContent
                   as="div"
                   animationNum={4}
-                  timelineRef={heroRef}
+                  timelineRef={aboutUsRef}
                   customVariants={textVariants}
                   className="mb-4 sm:text-xl text-xs"
                 >
@@ -87,7 +87,7 @@ export function AboutUs() {
                 <TimelineContent
                   as="div"
                   animationNum={4}
-                  timelineRef={heroRef}
+                  timelineRef={aboutUsRef}
                   customVariants={textVariants}
                   className="mb-4 sm:text-xl text-xs"
                 >

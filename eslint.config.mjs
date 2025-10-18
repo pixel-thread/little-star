@@ -20,6 +20,7 @@ const eslintConfig = [
     rules: {
       // Disable the image rule
       "@next/next/no-img-element": "off",
+      "react/no-unescaped-entities": "off",
     },
   },
 ];

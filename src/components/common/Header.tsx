@@ -12,10 +12,15 @@ import {
 } from "@/components/ui/resizable-navbar";
 import Link from "next/link";
 import { useState } from "react";
+
 const navItems = [
   {
     name: "Home",
     link: "/",
+  },
+  {
+    name: "About",
+    link: "#about",
   },
   {
     name: "Gallery",
@@ -41,7 +46,7 @@ export function Header() {
           items={navItems}
           onItemClick={() => setIsMobileMenuOpen(true)}
         />
-        <NavbarButton variant="gradient">Enroll Now</NavbarButton>
+        <NavbarButton variant="gradient">Apply Now</NavbarButton>
       </NavBody>
 
       {/* Mobile Navigation */}

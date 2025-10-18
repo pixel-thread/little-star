@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { Mail, MapPin, Phone } from "lucide-react";
 import Link from "next/link";
+import { env } from "@/env";
 
 export const ContactInfo = () => {
   return (
@@ -21,10 +22,12 @@ export const ContactInfo = () => {
             </div>
             <div>
               <h4 className="text-sm font-medium">Email</h4>
-              <p className="text-muted-foreground text-xs">
-                {/* TODO: Add real email address */}
-                example@example.com
-              </p>
+              <Link
+                href={`mailto:${env.NEXT_PUBLIC_APP_EMAIL_ADDRESS}`}
+                className="text-muted-foreground text-md"
+              >
+                {env.NEXT_PUBLIC_APP_EMAIL_ADDRESS}
+              </Link>
             </div>
           </div>
 
@@ -34,11 +37,19 @@ export const ContactInfo = () => {
             </div>
             <div>
               <h4 className="text-sm font-medium">Phone</h4>
-              <p className="text-muted-foreground text-xs">
-                +91 (700) 594 3521
-                <br />
-                +91 (986) 2864 573
-              </p>
+              <Link
+                href={`tel:${env.NEXT_PUBLIC_APP_PHONE_NUMBER}`}
+                className="text-muted-foreground text-md"
+              >
+                {env.NEXT_PUBLIC_APP_PHONE_NUMBER}
+              </Link>
+              <br />
+              <Link
+                href={`tel:${env.NEXT_PUBLIC_APP_PHONE_NUMBER_BACKUP}`}
+                className="text-muted-foreground text-md"
+              >
+                {env.NEXT_PUBLIC_APP_PHONE_NUMBER_BACKUP}
+              </Link>
             </div>
           </div>
 
@@ -48,7 +59,7 @@ export const ContactInfo = () => {
             </div>
             <div>
               <h4 className="text-sm font-medium">Address</h4>
-              <p className="text-muted-foreground capitalize text-xs">
+              <p className="text-muted-foreground capitalize text-md">
                 Nongbah Bynther <br />
                 Eastern west khasi hills district <br />
                 meghalaya - 793120
@@ -64,7 +75,7 @@ export const ContactInfo = () => {
           <CardTitle className="text-lg text-balance">Office Hours</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="space-y-2 text-sm">
+          <div className="space-y-2 text-md">
             <div className="flex justify-between">
               <span>Monday - Friday</span>
               <span className="text-muted-foreground">9:00 AM - 4:00 PM</span>
@@ -94,7 +105,7 @@ export const ContactInfo = () => {
           </p>
           <Button asChild variant="outline">
             <Link
-              href={"tel:9876543210"}
+              href={`tel:${env.NEXT_PUBLIC_APP_PHONE_NUMBER}`}
               className={cn(
                 buttonVariants({
                   className: "w-full px-6 py-4 cursor-pointer",

@@ -1,41 +1,73 @@
-import React, { useRef, useLayoutEffect, PropsWithChildren } from "react";
+"use client";
+import React, {
+  useRef,
+  useLayoutEffect,
+  useState,
+  PropsWithChildren,
+  useEffect,
+} from "react";
 import { motion, useScroll, useSpring, useTransform } from "motion/react";
+
+// Hook: allows hash (#id) anchors to scroll into view manually
+function useAnchorScroll() {
+  useEffect(() => {
+    const scrollToHash = () => {
+      const hash = window.location.hash;
+      if (hash) {
+        const el = document.querySelector(hash);
+        if (el)
+          el.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+      }
+    };
+
+    // Run on initial render
+    scrollToHash();
+
+    // Listen for hash changes
+    window.addEventListener("hashchange", scrollToHash);
+    return () => window.removeEventListener("hashchange", scrollToHash);
+  }, []);
+}
 
 /**
  * SmoothScroll wraps your content in a fixed, animated container
- * and applies smooth, spring-based vertical scrolling, for a native-like buttery scroll effect.
+ * and applies smooth, spring-based vertical scrolling,
+ * while preserving #hash navigation.
  */
 export const SmoothScroll: React.FC<
   PropsWithChildren<{ isMobile?: boolean }>
 > = ({ children }) => {
   const contentRef = useRef<HTMLDivElement>(null);
+  const [contentHeight, setContentHeight] = useState<number>(0);
 
-  // Calculate the scrollable height
-  const [contentHeight, setContentHeight] = React.useState<number>(0);
-
+  // measure scroll height on content update
   useLayoutEffect(() => {
     if (contentRef.current) {
       setContentHeight(contentRef.current.scrollHeight);
     }
   }, [children]);
 
-  // Framer Motion: Get the y-scroll value as user scrolls
   const { scrollY } = useScroll();
 
-  // Smooth out the scroll value using a spring for slick movement
   const smoothY = useSpring(scrollY, {
     stiffness: 120,
     damping: 28,
     mass: 1.2,
   });
 
-  // Convert smoothState into a negative y position for our fixed container
   const y = useTransform(smoothY, (val) => -val);
+
+  // enable hash scrolling even with fixed layout
+  useAnchorScroll();
 
   return (
     <>
-      {/* Scroll spacer - ensures native scroll bar appears */}
+      {/* Spacer ensures the page still scrolls natively */}
       <div style={{ height: contentHeight }} />
+
       <motion.div
         ref={contentRef}
         style={{

@@ -11,14 +11,17 @@ import { revealVariants } from "@/lib/constant/animiation/varients";
 import { Plus } from "lucide-react";
 import { useRef } from "react";
 
+type AnnouncementTags = "NEW" | "IMPORTANT" | "UPCOMING";
+
 type AnnouncementItem = {
   year: string;
   title: string;
   role: string;
   description: string;
+  tag?: AnnouncementTags[];
 };
 
-const announcementsData: AnnouncementItem[] = [
+const announcements: AnnouncementItem[] = [
   {
     year: "2025-Q3",
     title: "Back to School Orientation",
@@ -45,8 +48,11 @@ const announcementsData: AnnouncementItem[] = [
 export function AnnouncementPage() {
   const pageRef = useRef<HTMLDivElement>(null);
   return (
-    <Container className="sm:py-20 py-8 mx-auto w-full" ref={pageRef}>
-      <section id="announcements">
+    <section id="announcements">
+      <Container
+        className="sm:py-20 py-8 mx-auto w-full max-w-7xl"
+        ref={pageRef}
+      >
         <article className="text-center mx-auto flex flex-col items-center py-10">
           <TimelineContent
             as="h1"
@@ -70,7 +76,7 @@ export function AnnouncementPage() {
         </article>
 
         <Accordion>
-          {announcementsData.map((item, index) => (
+          {announcements.map((item, index) => (
             <AccordionItem
               key={index}
               value={`announcement-${index}`}
@@ -107,7 +113,7 @@ export function AnnouncementPage() {
             </AccordionItem>
           ))}
         </Accordion>
-      </section>
-    </Container>
+      </Container>
+    </section>
   );
 }

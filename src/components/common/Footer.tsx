@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { Container } from "./Container";
 import { revealVariants } from "@/lib/constant/animiation/varients";
+import { env } from "@/env";
 
 type FooterSection = {
   label: string;
@@ -19,10 +20,10 @@ const footerSections: FooterSection[] = [
     links: [
       { label: "Home", href: "/" },
       { label: "About Us", href: "/about" },
-      { label: "Our Services", href: "/services" },
-      { label: "Projects", href: "/projects" },
+      { label: "Our Faculty", href: "/faculty" },
+      { label: "Admission Details", href: "/Admission" },
       { label: "Blogs", href: "/blogs" },
-      { label: "Contact", href: "/contact-us" },
+      { label: "Contact", href: "#contact" },
     ],
   },
   {
@@ -67,7 +68,7 @@ export const Footer: React.FC = () => {
               transition={{ duration: 0.7, type: "spring", stiffness: 120 }}
               className="uppercase font-bold text-neutral-400 text-4xl md:text-6xl text-center"
             >
-              {process.env.NEXT_PUBLIC_APP_NAME || "YourApp"}
+              {env.NEXT_PUBLIC_APP_NAME || "Pixel Thread"}
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 16 }}
@@ -75,7 +76,7 @@ export const Footer: React.FC = () => {
               transition={{ delay: 0.18, duration: 0.5 }}
               className="font-medium text-neutral-600 text-lg md:text-xl mt-2 text-center lg:text-left"
             >
-              Let’s build your next project together.
+              {env.NEXT_PUBLIC_APP_FULL_NAME}
             </motion.p>
           </div>
 

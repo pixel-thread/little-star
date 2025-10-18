@@ -1,7 +1,6 @@
 "use client";
 
 import { HeroSection } from "@/components/pages/hero";
-import { Testimonials } from "@/components/common/Testimonials";
 import { Achivements } from "@/components/pages/achivements";
 import { Gallery } from "@/components/pages/gallery";
 import { AboutUs } from "@/components/pages/about";
@@ -17,7 +16,6 @@ export default function Home() {
       <Achivements />
       <Events />
       <Gallery />
-      {/* <Testimonials /> */}
       <AnnouncementPage />
       <Contact />
     </div>

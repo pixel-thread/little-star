@@ -1,5 +1,4 @@
 import React from "react";
-import { SmoothScroll } from "./SmoothScroll";
 
 interface LayoutProps {
   header?: React.ReactNode;

@@ -238,9 +238,15 @@ export const MobileNavToggle = ({
   onClick: () => void;
 }) => {
   return isOpen ? (
-    <XIcon className="text-black dark:text-white" onClick={onClick} />
+    <XIcon
+      className="text-black text-light dark:text-white"
+      onClick={onClick}
+    />
   ) : (
-    <MenuIcon className="text-black dark:text-white" onClick={onClick} />
+    <MenuIcon
+      className="text-black text-light dark:text-white"
+      onClick={onClick}
+    />
   );
 };
 

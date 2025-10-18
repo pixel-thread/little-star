@@ -10,7 +10,7 @@ export function Gallery() {
   return (
     <Container ref={heroRef} className="h-screen py-20 w-full">
       <section
-        id={"#gallery"}
+        id={"gallery"}
         className="text-center h-auto space-y-5 flex flex-col justify-center items-center"
       >
         <TimelineContent
