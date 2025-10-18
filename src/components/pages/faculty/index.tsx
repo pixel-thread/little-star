@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import { User } from "lucide-react";
 import { TimelineContent } from "@/components/ui/timeline-content";
 import { FocusCards } from "@/components/ui/focus-cards";
 import { revealVariants } from "@/lib/constant/animiation/varients";

@@ -118,6 +118,7 @@ export const ImagesSlider = ({
             initial="initial"
             animate="visible"
             exit={direction === "up" ? "upExit" : "downExit"}
+            // eslint-disable-next-line
             variants={slideVariants as any}
             className="image min-w-full h-full w-full absolute inset-0 object-cover object-center"
           />
