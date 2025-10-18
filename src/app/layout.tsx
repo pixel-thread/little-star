@@ -27,7 +27,7 @@ export default function RootLayout({
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    setTimeout(() => setIsMounted(true), 4000);
+    setTimeout(() => setIsMounted(true), 1000);
   }, []);
 
   return (

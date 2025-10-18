@@ -13,8 +13,40 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { useMutation } from "@tanstack/react-query";
+import http from "@/utils/http";
+import { env } from "@/env";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { AlertCircleIcon, CheckCircle2Icon } from "lucide-react";
+import { useState } from "react";
 
+type Web3Response = {
+  data: ContactSchemaT;
+};
 export const ContactForm = () => {
+  const [isSuccess, setIsSuccess] = useState(false);
+  const {
+    mutate,
+    isPending,
+    data,
+    isSuccess: isEmailSent,
+  } = useMutation({
+    mutationFn: (data: ContactSchemaT) =>
+      http.post<Web3Response>("https://api.web3forms.com/submit", {
+        ...data,
+        access_key: env.NEXT_PUBLIC_WEB3FORM_ACCESS_KEY,
+      }),
+    onSuccess: (data) => {
+      if (data.success) {
+        form.reset();
+        setIsSuccess(true);
+        return data;
+      }
+      setIsSuccess(false);
+      return data;
+    },
+  });
+
   const form = useForm<ContactSchemaT>({
     resolver: zodResolver(contactSchema),
     defaultValues: {
@@ -27,7 +59,7 @@ export const ContactForm = () => {
     },
   });
 
-  const onSubmit: SubmitHandler<ContactSchemaT> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<ContactSchemaT> = (data) => mutate(data);
 
   return (
     <Card className="h-full w-full">
@@ -37,6 +69,25 @@ export const ContactForm = () => {
         </CardTitle>
       </CardHeader>
       <CardContent className="p-4">
+        <div className="pb-8">
+          {isEmailSent && (
+            <div>
+              {isSuccess ? (
+                <Alert>
+                  <CheckCircle2Icon />
+                  <AlertTitle>Success! Your message has been sent</AlertTitle>
+                  <AlertDescription>{data?.message}</AlertDescription>
+                </Alert>
+              ) : (
+                <Alert variant={"destructive"}>
+                  <AlertCircleIcon />
+                  <AlertTitle>Error! Your message could not be sent</AlertTitle>
+                  <AlertDescription>{data?.message}</AlertDescription>
+                </Alert>
+              )}
+            </div>
+          )}
+        </div>
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
@@ -159,8 +210,11 @@ export const ContactForm = () => {
                 )}
               />
             </div>
-            <Button className="w-full px-8 py-6 cursor-pointer">
-              Send Message
+            <Button
+              disabled={isPending}
+              className="w-full px-8 py-6 cursor-pointer"
+            >
+              {isPending ? "Sending..." : "Send Message"}
             </Button>
           </form>
         </Form>

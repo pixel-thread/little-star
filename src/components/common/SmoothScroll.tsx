@@ -7,6 +7,7 @@ import React, {
   useEffect,
 } from "react";
 import { motion, useScroll, useSpring, useTransform } from "motion/react";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 // Hook: allows hash (#id) anchors to scroll into view manually
 function useAnchorScroll() {
@@ -40,6 +41,7 @@ function useAnchorScroll() {
 export const SmoothScroll: React.FC<
   PropsWithChildren<{ isMobile?: boolean }>
 > = ({ children }) => {
+  const isMobile = useIsMobile();
   const contentRef = useRef<HTMLDivElement>(null);
   const [contentHeight, setContentHeight] = useState<number>(0);
 
@@ -62,7 +64,9 @@ export const SmoothScroll: React.FC<
 
   // enable hash scrolling even with fixed layout
   useAnchorScroll();
-
+  if (isMobile) {
+    return <>{children}</>;
+  }
   return (
     <>
       {/* Spacer ensures the page still scrolls natively */}

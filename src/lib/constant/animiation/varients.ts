@@ -29,3 +29,34 @@ export const textVariants = {
     opacity: 0,
   },
 };
+
+export const slideVariants = {
+  initial: {
+    scale: 0,
+    opacity: 0,
+    rotateX: 45,
+  },
+  visible: {
+    scale: 1,
+    rotateX: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+      ease: [0.645, 0.045, 0.355, 1.0],
+    },
+  },
+  upExit: {
+    opacity: 1,
+    y: "-150%",
+    transition: {
+      duration: 1,
+    },
+  },
+  downExit: {
+    opacity: 1,
+    y: "150%",
+    transition: {
+      duration: 1,
+    },
+  },
+};

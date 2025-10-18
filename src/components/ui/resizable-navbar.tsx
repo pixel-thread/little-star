@@ -53,7 +53,7 @@ export const Navbar = ({ children, className }: NavbarProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollY } = useScroll({
     target: ref,
-    container: ref,
+    // container: ref,
     offset: ["start start", "end start"],
   });
   const [visible, setVisible] = useState<boolean>(false);
@@ -134,22 +134,22 @@ export const NavItems = ({
         <Link
           onMouseEnter={() => setHovered(idx)}
           onClick={onItemClick}
-          className={cn("relative px-4 py-2")}
+          className={cn("relative px-4 py-2 group")}
           key={`link-${idx}`}
           href={item.link}
         >
           {hovered === idx && (
             <motion.div
               layoutId="hovered"
-              className="absolute inset-0 h-full w-full rounded-full bg-gray-100 dark:bg-neutral-800"
+              className="absolute inset-0 h-full w-full group rounded-full bg-gray-100 dark:bg-neutral-800"
             />
           )}
           <span
             className={cn(
               "relative z-20",
               visible
-                ? "text-white dark:text-neutral-500"
-                : "text-white dark:text-neutral-300",
+                ? "text-white dark:text-neutral-500 group-hover:text-primary duration-500"
+                : "text-white dark:text-neutral-300 group-hover:text-primary duration-500",
             )}
           >
             {item.name}

@@ -12,7 +12,7 @@ export const HeroHeader = () => {
       <TimelineContent
         ref={heroRef}
         className="max-w-7xl px-20 text-center w-full flex flex-col items-center justify-center"
-        as="h1"
+        as="div"
         animationNum={0}
         timelineRef={heroRef}
         customVariants={revealVariants}
